@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>mc-shader-preview</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <div id="app">
+    <main id="viewport-wrap">
+      <canvas id="viewport"></canvas>
+      <div id="viewport-overlay">
+        <span id="fps-counter">-- fps</span>
+      </div>
+      <div id="dropzone" class="dropzone">
+        <div class="dropzone-inner">
+          <p class="dropzone-title">Drop a shaderpack .zip here</p>
+          <p class="dropzone-sub">or use the upload button in the sidebar</p>
+        </div>
+      </div>
+    </main>
+
+    <aside id="sidebar">
+      <header class="sidebar-header">
+        <h1>mc-shader-preview</h1>
+        <p class="sidebar-tagline">Preview Iris/Oculus shaderpacks in the browser</p>
+      </header>
+
+      <section class="panel">
+        <label class="file-upload">
+          <input type="file" id="file-input" accept=".zip" hidden />
+          <span id="upload-label">Upload shaderpack .zip</span>
+        </label>
+        <div id="pack-name" class="pack-name"></div>
+      </section>
+
+      <section class="panel panel-row">
+        <div class="field">
+          <label for="version-select">MC Version</label>
+          <select id="version-select">
+            <option value="1.20.1">1.20.1</option>
+            <option value="1.21.1">1.21.1</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="loader-select">Loader</label>
+          <select id="loader-select">
+            <option value="iris">Iris</option>
+            <option value="oculus">Oculus</option>
+          </select>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="heaviness-header">
+          <span>Heaviness</span>
+          <span id="heaviness-score" class="heaviness-score">--</span>
+        </div>
+        <div class="heaviness-bar"><div id="heaviness-fill" class="heaviness-fill"></div></div>
+        <ul id="heaviness-breakdown" class="heaviness-breakdown"></ul>
+      </section>
+
+      <section class="panel panel-grow">
+        <div class="panel-title">Settings</div>
+        <div id="settings-panel" class="settings-panel">
+          <p class="settings-empty">Upload a shaderpack to see its settings.</p>
+        </div>
+      </section>
+    </aside>
+
+    <footer id="console-drawer">
+      <div id="console-header">
+        <span>Console</span>
+        <button id="console-toggle" aria-label="Toggle console">_</button>
+      </div>
+      <div id="console-log" class="console-log"></div>
+    </footer>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
